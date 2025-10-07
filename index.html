@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prestige Class</title>
+  <meta name="description" content="Beyond Ordinary — Prestige Class. 4 minds. 1 class.">
+  <style>
+    :root{--bg:#0b0b0c;--text:#e8e6e3;--muted:#9e9c98;--line:#242428;--gold:#c7a85b;--accent:#d1b463}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Pretendard,Arial,sans-serif;line-height:1.6}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+    header{position:sticky;top:0;z-index:10;background:rgba(11,11,12,.72);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
+    .brand-name{font-weight:600;letter-spacing:.2px}
+    .menu{display:flex;align-items:center;gap:18px}
+    .link{color:var(--muted);text-decoration:none}.link:hover{color:var(--gold)}
+    .btn{border:1px solid var(--line);padding:8px 14px;border-radius:999px;text-decoration:none;color:inherit}
+    .btn:hover{border-color:var(--gold);color:var(--gold)}
+    .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
+    .kicker{color:var(--gold);letter-spacing:.12em;font-size:12px;text-transform:uppercase}
+    h1{font-size:48px;line-height:1.15;margin:10px 0 18px}
+    .gold{color:var(--gold)} .sub{color:var(--muted);max-width:740px}
+    .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <img src="./prestige_phoenix.svg" alt="Prestige Class" width="44" height="44"/>
+        <span class="brand-name">Prestige Class</span>
+      </a>
+      <nav class="menu" aria-label="main">
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="wrap">
+        <p class="kicker">Beyond Ordinary</p>
+        <h1>4 minds. <span class="gold">1 class.</span></h1>
+        <p class="sub">프레스티지는 거창함이 아니라, 생각의 품격입니다. 네 사람의 감각과 실행으로 평범을 비범으로 바꿉니다.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">Our Projects</a>
+          <a class="btn" href="#contact">콜라보 문의</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap" style="padding:28px 0;color:#8b8a87;font-size:13px">
+    © <span id="year"></span> Prestige Class · Built with elegance.
+  </div></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
