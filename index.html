@@ -1,189 +1,170 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prestige Class</title>
-  <meta name="description" content="Beyond Ordinary — Prestige Class. 4 minds. 1 class.">
-  <style>
-    :root{--bg:#0b0b0c;--text:#e8e6e3;--muted:#9e9c98;--line:#242428;--gold:#c7a85b;--accent:#d1b463}
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Pretendard,Arial,sans-serif;line-height:1.6}
-    .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
-    header{position:sticky;top:0;z-index:10;background:rgba(11,11,12,.72);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
-    .brand-name{font-weight:600;letter-spacing:.2px}
-    .menu{display:flex;align-items:center;gap:18px}
-    .link{color:var(--muted);text-decoration:none}.link:hover{color:var(--gold)}
-    .btn{border:1px solid var(--line);padding:8px 14px;border-radius:999px;text-decoration:none;color:inherit}
-    .btn:hover{border-color:var(--gold);color:var(--gold)}
-    .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
-    .kicker{color:var(--gold);letter-spacing:.12em;font-size:12px;text-transform:uppercase}
-    h1{font-size:48px;line-height:1.15;margin:10px 0 18px}
-    .gold{color:var(--gold)} .sub{color:var(--muted);max-width:740px}
-    .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
-    /* 별 배경 전체화면 캔버스 */
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prestige Class</title>
+<meta name="description" content="Beyond Ordinary — Prestige Class. 4 minds. 1 class.">
+<style>
+:root{
+  --bg:#0b0b0c;--text:#e8e6e3;--muted:#9e9c98;
+  --line:#242428;--gold:#c7a85b;--accent:#d1b463;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,Segoe UI,Pretendard,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ----- 별빛 배경 ----- */
 #pc-stars{
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(1200px 600px at 50% -20%, rgba(199,168,91,.12), transparent);
-}
-header, .hero, main, footer{ position: relative; z-index: 1; }
-
-/* 히어로 로고 효과 */
-.pc-logo-hero{
-  vertical-align: -6px;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
-  animation: pc-float 6s ease-in-out infinite;
-}
-@keyframes pc-float{
-  0%,100%{ transform: translateY(0) }
-  50%{ transform: translateY(-6px) }
+  position:fixed;inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:radial-gradient(1200px 600px at 50% -20%, rgba(199,168,91,.12), transparent);
 }
 
-/* 골드 하이라이트(shine) */
-.pc-logo-hero{ position: relative; }
-.pc-logo-hero::after{
-  content:""; position:absolute; left:-120%; top:0; width:50%; height:100%;
-  background: linear-gradient(75deg, transparent, rgba(255,255,255,.35), transparent);
-  transform: skewX(-15deg);
-  filter: blur(2px);
-  animation: pc-shine 4.8s linear infinite;
+/* ----- 헤더 ----- */
+header{
+  position:sticky;top:0;z-index:5;
+  background:rgba(11,11,12,.72);
+  backdrop-filter:blur(8px) saturate(160%);
+  border-bottom:1px solid var(--line);
 }
-@keyframes pc-shine{
-  0%{ left:-120% } 100%{ left:160% }
-}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 32px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:600;}
+.menu{display:flex;gap:18px;}
+.menu a{color:var(--muted);text-decoration:none;}
+.menu a:hover{color:var(--gold);}
 
-/* 스크롤 등장 애니메이션 타겟 공통 */
-.pc-reveal{ opacity: 0; transform: translateY(20px); }
-  </style>
+/* ----- Hero 섹션 ----- */
+.hero{position:relative;z-index:1;padding:120px 32px 80px;text-align:center;}
+.hero .pc-logo{width:100px;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 0 10px rgba(199,168,91,.3));}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero h1{font-size:52px;margin:20px 0;color:var(--text);}
+.hero .gold{color:var(--gold);}
+.hero p{color:var(--muted);max-width:700px;margin:0 auto;}
+.cta{margin-top:30px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.btn{border:1px solid var(--line);padding:10px 20px;border-radius:999px;text-decoration:none;color:inherit;}
+.btn:hover{border-color:var(--gold);color:var(--gold);}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--accent));color:#111;border:none;}
+
+/* ----- 스크롤 리빌 ----- */
+.pc-reveal{opacity:0;transform:translateY(30px);}
+section{padding:100px 0;text-align:center;}
+section h2{font-size:36px;color:var(--gold);}
+section p{max-width:700px;margin:16px auto;color:var(--muted);}
+
+/* ----- 마우스 패럴럭스 ----- */
+.layer{position:absolute;inset:0;pointer-events:none;}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="/">
-        <img src="./prestige_phoenix.svg" alt="Prestige Class" width="44" height="44"/>
-        <span class="brand-name">Prestige Class</span>
-      </a>
-      <nav class="menu" aria-label="main">
-        <a class="link" href="#about">About</a>
-        <a class="link" href="#projects">Projects</a>
-        <a class="btn" href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- 별빛 배경 -->
-<canvas id="pc-stars" aria-hidden="true"></canvas>
+<canvas id="pc-stars"></canvas>
+
+<header>
+  <div class="nav">
+    <a href="/" class="brand">
+      <img src="./prestige_phoenix.svg" width="40" alt="Prestige Class Logo"/>
+      Prestige Class
+    </a>
+    <nav class="menu">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <main>
-  <section class="hero" id="about">
-    <div class="wrap">
-      <p class="kicker">Beyond Ordinary.</p>
-      <h1>
-        <img class="pc-logo-hero" src="./prestige_phoenix.svg" alt="Prestige Logo" width="96" height="96" />
-        4 minds. <span class="gold">1 class.</span>
-      </h1>
-      <p class="sub">우리와 함께라면, 당신의 삶도 바뀝니다.</p>
-      <div class="cta">
-        <a class="btn" href="#projects">Our Projects</a>
-        <a class="btn" href="#contact">With Us</a>
-      </div>
+  <section class="hero">
+    <img class="pc-logo" src="./prestige_phoenix.svg" alt="Prestige Phoenix"/>
+    <h1>4 minds. <span class="gold">1 class.</span></h1>
+    <p>프레스티지는 거창함이 아니라, 생각의 품격입니다.<br> 네 사람의 감각과 실행으로 평범을 비범으로 바꿉니다.</p>
+    <div class="cta">
+      <a class="btn-primary" href="#projects">Our Projects</a>
+      <a class="btn" href="#contact">Contact Us</a>
     </div>
   </section>
 
-  <!-- 섹션 예시: 스크롤 등장 애니메이션 대상 -->
-  <section class="pc-reveal">
-    <div class="wrap">
-      <h2>Our Philosophy</h2>
-      <p>품격(Elegance), 진정성(Integrity), 혁신(Innovation), 조화(Harmony)</p>
-    </div>
+  <section id="about" class="pc-reveal">
+    <h2>About</h2>
+    <p>우리는 협력과 창의성, 그리고 품격을 중심으로 한 네트워크 그룹입니다.<br> Prestige Class는 아이디어를 실현하고, 가치를 증명하는 공간입니다.</p>
+  </section>
+
+  <section id="projects" class="pc-reveal">
+    <h2>Projects</h2>
+    <p>· AI 기반 브랜딩 실험<br>· 웹 인터랙티브 전시<br>· 커뮤니티 아트 플랫폼</p>
+  </section>
+
+  <section id="contact" class="pc-reveal">
+    <h2>Contact</h2>
+    <p>협업 또는 제안 문의: <a href="mailto:contact@prestigeclass.kr" style="color:var(--gold)">contact@prestigeclass.kr</a></p>
   </section>
 </main>
-  <main>
-    <section class="hero" id="about">
-      <div class="wrap">
-        <p class="kicker">Beyond Ordinary.</p>
-        <h1>We make, and we serve <span class="gold">Prestige.</span></h1>
-        <p class="sub">프레스티지는 어떤 거창한 것이 아닙니다. 당신의 생각에 달려 있습니다. 우리는 이를 돕는 일을 합니다.</p>
-        <div class="cta">
-          <a class="btn" href="#projects">Our Projects</a>
-          <a class="btn" href="#contact">With Us</a>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <footer><div class="wrap" style="padding:28px 0;color:#8b8a87;font-size:13px">
-    © <span id="year"></span> Prestige Class · Built with elegance.
-  </div></footer>
-  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
-  <!-- GSAP & ScrollTrigger (애니메이션) -->
+<footer style="text-align:center;padding:40px 0;color:#777;">
+  © <span id="year"></span> Prestige Class · Built with elegance.
+</footer>
+
+<!-- GSAP ScrollTrigger -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
 <script>
-// 1) 스크롤 리빌
+// 연도 자동 업데이트
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// 스크롤 리빌
 gsap.registerPlugin(ScrollTrigger);
-gsap.utils.toArray('.pc-reveal').forEach((el) => {
-  gsap.to(el, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 80%',
-      once: true
-    }
+gsap.utils.toArray('.pc-reveal').forEach(el=>{
+  gsap.to(el,{
+    opacity:1,
+    y:0,
+    duration:0.8,
+    ease:"power2.out",
+    scrollTrigger:{trigger:el,start:"top 80%",once:true}
   });
 });
 
-// 2) 별빛 패럴럭스 배경 — 가벼운 캔버스 파티클
+// 별빛 배경
 (function(){
-  const canvas = document.getElementById('pc-stars');
-  const ctx = canvas.getContext('2d', { alpha: true });
-  let w, h, stars;
-
+  const c=document.getElementById('pc-stars'),ctx=c.getContext('2d',{alpha:true});
+  let w,h,stars=[];
   function resize(){
-    w = canvas.width = innerWidth * devicePixelRatio;
-    h = canvas.height = innerHeight * devicePixelRatio;
-    canvas.style.width = innerWidth + 'px';
-    canvas.style.height = innerHeight + 'px';
-    gen();
-  }
-
-  function gen(){
-    const count = Math.min(180, Math.floor((innerWidth*innerHeight)/12000));
-    stars = Array.from({length: count}).map(()=>({
-      x: Math.random()*w,
-      y: Math.random()*h,
-      s: Math.random()*1.6 + 0.4,
-      a: Math.random()*0.6 + 0.2,
-      v: (Math.random()*0.2 + 0.05) * devicePixelRatio
+    w=c.width=innerWidth*devicePixelRatio;
+    h=c.height=innerHeight*devicePixelRatio;
+    stars=Array.from({length:150},()=>({
+      x:Math.random()*w,y:Math.random()*h,
+      s:Math.random()*1.5+0.3,
+      a:Math.random()*0.6+0.2,
+      v:(Math.random()*0.2+0.05)*devicePixelRatio
     }));
   }
-
   function tick(){
     ctx.clearRect(0,0,w,h);
-    for(const st of stars){
-      st.y += st.v;
-      if(st.y > h) st.y = -10;
-      ctx.globalAlpha = st.a;
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(st.x, st.y, st.s, st.s);
-      // 약한 골드색 몇 개
-      if(Math.random()<0.02){
-        ctx.fillStyle = '#c7a85b';
-        ctx.fillRect(st.x+1, st.y+1, st.s, st.s);
-      }
+    for(const s of stars){
+      s.y+=s.v; if(s.y>h) s.y=-5;
+      ctx.globalAlpha=s.a;
+      ctx.fillStyle=Math.random()<0.02?'#c7a85b':'#fff';
+      ctx.fillRect(s.x,s.y,s.s,s.s);
     }
     requestAnimationFrame(tick);
   }
-
-  addEventListener('resize', resize);
-  resize(); tick();
+  addEventListener('resize',resize);
+  resize();tick();
 })();
+
+// 마우스 패럴럭스
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/window.innerWidth -0.5)*10;
+  const y=(e.clientY/window.innerHeight-0.5)*10;
+  gsap.to('.pc-logo',{x:-x,y:-y,rotation:x/2,duration:1,ease:"power3.out"});
+});
 </script>
+
 </body>
 </html>
