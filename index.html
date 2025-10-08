@@ -7,9 +7,13 @@
 <meta name="description" content="Beyond Ordinary — The Prestige Class.">
 <style>
 header {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease;
+  position:sticky;top:0;z-index:20;
+  background:rgba(11,11,12,.6);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  opacity:1;  /* ← 이거 변경 */
+  pointer-events:auto; /* ← 추가 */
+  transition:none; /* ← 애니메이션 제거 */
 }
 header.visible {
   opacity: 1;
@@ -82,12 +86,6 @@ canvas#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;background:ra
 </head>
 <body>
 <canvas id="stars"></canvas>
-<div id="intro">
-  <div class="intro-text" id="introMessage">Welcome to Prestige Realm...</div>
-  <img src="./prestige_phoenix.svg" alt="Prestige Class">
-  <div class="intro-text" id="typing"></div>
-</div>
-
 <header>
   <div class="wrap nav">
     <a class="brand" href="#"><img src="./prestige_phoenix.svg" width="30"><b>The Prestige Class</b></a>
@@ -103,29 +101,28 @@ canvas#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;background:ra
 <section class="hero reveal">
   <img class="logo" src="./prestige_phoenix.svg" alt="">
   <h1 data-ko="Beyond Ordinary, The Prestige" data-en="Beyond Ordinary, The Prestige">The Prestige Class<br>우리의 여정에<br>함께 하세요.</h1>
-  <p class="sub" data-ko="Prestige는 엄청난 무언가가 아닙니다. 당신의 삶 속에 숨어있습니다. 우린 그걸 찾습니다." data-en="Prestige is not about grandeur, it's about the sophistication of thought. We find that.">Prestige는 당신의 삶 속에 숨어있습니다.<br>우린 그걸 찾습니다.</p>
+  <p class="sub" data-ko="당신의 삶 속에 숨은 Prestige를 찾아드립니다." data-en="Prestige is not about grandeur,<br>it's about the sophistication of thought.<br>We find that.">Prestige는 당신의 삶 속에 숨어있습니다.<br>우린 그걸 찾습니다.</p>
   <div class="cta">
-    <a class="btn-primary" href="#projects" data-ko="프로젝트 보기" data-en="View Projects">프로젝트 보기</a>
-    <a class="btn" href="#contact" data-ko="문의하기" data-en="Contact Us">문의하기</a>
+    <a class="btn" href="#contact" data-ko="문의하기" data-en="Contact Us">문의</a>
   </div>
 </section>
 
 <section id="about" class="reveal">
   <div class="wrap">
     <h2 data-ko="소개" data-en="About">소개</h2>
-    <p class="muted" data-ko="우리는 디자인·기술·문화를 망라하는 크리에이티브 그룹입니다." data-en="We are a team of blending design, technology, and culture.">우리는 디자인·기술·문화를 망라하는 크리에이티브 그룹입니다.</p>
+    <p class="muted" data-ko="우리는 디자인·기술·문화를 망라하는<br>크리에이티브 그룹입니다." data-en="We are a team of blending design, technology, and culture.">우리는 디자인·기술·문화를 망라하는 크리에이티브 그룹입니다.</p>
   </div>
 </section>
 
 <section id="projects" class="reveal">
   <div class="wrap">
     <h2 data-ko="프로젝트" data-en="Projects">프로젝트</h2>
-    <p class="muted" data-ko="현재 준비 중인 주요 프로젝트입니다." data-en="WIP flagship projects.">현재 진행 중인 주요 프로젝트입니다.</p>
+    <p class="muted" data-ko="현재 준비 중인 주요 프로젝트입니다." data-en="WIP or Ongoing flagship projects.">현재 준비 또는 진행 중인 주요 프로젝트입니다.</p>
     <div class="grid">
       <div class="card"><h3>01</h3><p class="muted"><b>전자기기 서드파티 제품 제작</b><br>당신의 기기를 더 아름답게.</p></div>
-      <div class="card"><h3>02</h3><p class="muted"><b>Prestige Salon</b><br>주기적인 '본토 요리 회동'. 테크, 문화, 년 인사이트 공유</p></div>
-      <div class="card"><h3>03</h3><p class="muted"><b>민간인 사찰 서비스</b><br>원하는 것이 그 무엇이든. 우리에게 불가능이란 없습니다.</p></div>
-      <div class="card"><h3>04</h3><p class="muted"><b>Weekly Prestige(가칭)</b><br>창의성과 미니멀리즘을 기록하는 온라인 매거진.</p></div>
+      <div class="card"><h3>02</h3><p class="muted"><b>Prestige Salon</b><br>주기적인 '본토 요리 회동'.<br>테크, 문화, 년 인사이트 공유</p></div>
+      <div class="card"><h3>03</h3><p class="muted"><b>민간인 사찰 서비스</b><br>원하는 것이 그 무엇이든.<br>우리에게 불가능이란 없습니다.</p></div>
+      <div class="card"><h3>04</h3><p class="muted"><b>Weekly Prestige(가칭)</b><br>창의성과 미니멀리즘을 기록하는<br>온라인 매거진.</p></div>
       <div class="card"><h3>05</h3><p class="muted"><b>Street Auction</b><br>우리의 안목을 마음껏 뽐내는 시간.</p></div>
     </div>
   </div>
@@ -166,27 +163,6 @@ function drawStars(){
 }
 drawStars();
 
-// Intro animation
-window.addEventListener('load',()=>{
-  const intro=document.getElementById('intro');
-  const logo=intro.querySelector('img');
-  const msg=document.getElementById('introMessage');
-  const typing=document.getElementById('typing');
-  setTimeout(()=>msg.animate([{opacity:0},{opacity:1}],{duration:1000,fill:'forwards'}),200);
-  setTimeout(()=>{msg.animate([{opacity:1},{opacity:0}],{duration:800,fill:'forwards'})},1500);
-  setTimeout(()=>{
-    logo.animate([{opacity:0,transform:'scale(.6) rotate(-6deg)'},{opacity:1,transform:'scale(1.05) rotate(0deg)'},{opacity:1,transform:'scale(1)'}],
-    {duration:1200,easing:'cubic-bezier(.3,.7,.2,1)',fill:'forwards'});
-  },1600);
-  const words=["Beyond Ordinary","The Prestige Class"];
-  let i=0,j=0;
-  function type(){typing.textContent=words[i].slice(0,++j);
-    if(j===words[i].length){setTimeout(()=>{j=0;i=(i+1)%words.length;type();},1000);}else setTimeout(type,80);}
-  setTimeout(()=>typing.animate([{opacity:0},{opacity:1}],{duration:1000,fill:'forwards'}),2600);
-  setTimeout(()=>type(),2800);
-  setTimeout(()=>intro.classList.add('fade-out'),5200)
-  setTimeout(()=>document.querySelector('header').classList.add('visible'),5300);
-});
 
 // Scroll reveal
 const io=new IntersectionObserver(entries=>{
