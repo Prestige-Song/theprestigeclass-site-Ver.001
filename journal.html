@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prestige Journal</title>
+<meta name="description" content="Thoughts, creativity, and design philosophy — Prestige Journal.">
+<link rel="icon" href="./prestige_phoenix.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#0b0b0c;--text:#e8e6e3;--muted:#a7a5a1;--line:#232327;
+  --gold:#c7a85b;--accent:#d1b463;--radius:16px;--max:1000px;--p-x:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,Pretendard,sans-serif;line-height:1.6;overflow-x:hidden;}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--p-x)}
+header{
+  position:sticky;top:0;z-index:20;background:rgba(11,11,12,.6);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:12px}
+.menu{display:flex;align-items:center;gap:16px}
+.link{color:var(--muted);transition:.3s;padding:8px 10px;border-radius:8px}
+.link:hover{color:var(--gold)}
+.hero{padding:120px 0 60px;text-align:center;}
+.hero h1{font-size:clamp(36px,6vw,72px);margin-bottom:12px;color:var(--gold)}
+.hero p{color:var(--muted);font-size:18px;max-width:700px;margin:0 auto;}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:20px}
+article{
+  background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px;transition:.3s ease;cursor:pointer;
+}
+article:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 0 20px rgba(199,168,91,.15);}
+article h2{font-size:22px;margin-bottom:6px;color:var(--text)}
+article p.muted{color:var(--muted)}
+footer{color:#8f8e8b;padding:28px 0;font-size:13px;border-top:1px solid var(--line);text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="./prestige_phoenix.svg" width="30" height="30" alt="Prestige Class">
+      <b>Prestige Class</b>
+    </a>
+    <nav class="menu">
+      <a class="link" href="index.html">Home</a>
+      <a class="link" href="journal.html" style="color:var(--gold);">Journal</a>
+      <a class="link" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Prestige Journal</h1>
+    <p>생각의 기록, 창의의 흔적.<br>우리가 보고 느낀 모든 경험이 여기에 쌓입니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="grid">
+      <a href="journal-detail.html?id=1">
+        <article>
+          <h2>01. 생각의 온도</h2>
+          <p class="muted">진정성에서 비롯된 창의성 — 프레스티지의 첫 번째 이야기.</p>
+        </article>
+      </a>
+
+      <a href="journal-detail.html?id=2">
+        <article>
+          <h2>02. 기술의 미학</h2>
+          <p class="muted">디지털이 단순한 도구를 넘어, 감각의 언어가 되는 순간.</p>
+        </article>
+      </a>
+
+      <a href="journal-detail.html?id=3">
+        <article>
+          <h2>03. 여백의 가치</h2>
+          <p class="muted">비어 있음의 아름다움 속에서 발견한 균형과 집중.</p>
+        </article>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Prestige Class · Journal Edition.</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
